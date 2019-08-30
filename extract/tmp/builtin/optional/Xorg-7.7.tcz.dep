@@ -1,0 +1,9 @@
+Xprogs.tcz
+Xorg-7.7-bin.tcz
+Xorg-7.7-lib.tcz
+Xorg-fonts.tcz
+xcursor-themes.tcz
+xf86-input-evdev.tcz
+xf86-video-vesa.tcz
+xkeyboard-config.tcz
+xorg-server.tcz

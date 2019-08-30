@@ -1,0 +1,30 @@
+{
+  "name": "electron-iso-packager",
+  "version": "1.0.0",
+  "os": [
+    "linux"
+  ],
+  "description": "Package your Electron app into a self-contained operating system (suitable for virtual machines/ live CDs)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Tests are not avaiable yet\""
+  },
+  "bin": {
+    "electron-iso-packager": "./buildIso.sh"
+  },
+  "keywords": [
+    "electron",
+    "packager",
+    "bundler",
+    "app",
+    "iso",
+    "tinycore",
+    "live",
+    "os"
+  ],
+  "author": "Luca Fabbian",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "electron-packager": "^14.0.5"
+  }
+}

@@ -1,0 +1,10 @@
+NAME=TinyCore
+VERSION="10.1"
+ID=tinycore
+VERSION_ID=10.1
+PRETTY_NAME="TinyCoreLinux 10.1"
+ANSI_COLOR="0;34"
+CPE_NAME="cpe:/o:tinycore:tinycore_linux:10.1"
+HOME_URL="http://tinycorelinux.net/"
+SUPPORT_URL="http://forum.tinycorelinux.net/"
+BUG_REPORT_URL="http://forum.tinycorelinux.net/"
