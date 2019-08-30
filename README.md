@@ -60,5 +60,5 @@ As said before, [aterm](https://linux.die.net/man/1/aterm) package is included, 
 If your goal is to obtain persistency, you may also be interested in tinycore boot codes as explained [here](http://wiki.tinycorelinux.net/wiki:boot_codes_explained).
 
 ## License
-This package is licensed under Mit License.
+This package is licensed under GPL-3.0-or-later license.
 Tinycore is licensed under [gpl v2](http://tinycorelinux.net/faq.html).

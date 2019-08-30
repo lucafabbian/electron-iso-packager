@@ -36,7 +36,7 @@ Done! Just wait a few minutes and the iso file will be ready as `/tmp/ezremaster
 ## Cloning electron-iso-packager
 Just use the included script `updateIsoFiles.sh`, and you are done!
 ```
-git clone
+git clone https://github.com/lucafabbian/electron-iso-packager.git
 sudo ./electron-iso-packager/updateIsoFiles.sh /path/to/your/ezremaster.iso
 ```
 The script will do everything needed. When it ends, if you want you can enter the dir and use `npm link` to make electron-iso-packager command avaiable globally.
