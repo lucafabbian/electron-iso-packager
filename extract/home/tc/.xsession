@@ -1,5 +1,0 @@
-Xvesa -br -screen 1024x768x32 -shadow -2button -mouse /dev/input/mice,5 -nolisten tcp -I >/dev/null 2>&1 &
-export XPID=$!
-waitforX || ! echo failed in waitforX || exit
-sudo ln -s /tmp/tcloop/fontconfig/usr/local/etc/fonts /etc
-/home/tc/electron-iso-linux-ia32/autostart.sh

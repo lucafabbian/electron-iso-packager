@@ -35,24 +35,41 @@ POSTSCRIPT=$3    # Script called before building
 # Retrieve script real path and store current path
 DIR=`dirname $(readlink -f $0)`  # Script path
 KIOSKDIR="$DIR/extract/home/tc"  # Subdir
+ISO_FILE="$DIR/core.iso"         # Iso file
 CURRENTDIR=$PWD                  # Current path
 
 echo "Running electron-iso-packager"
-echo "1/4    -> Preparing build...
+echo "1/5    -> Preparing build...
 "
 # Clear (if something has gone wrong previously)
 rm -rf "$KIOSKDIR/electron-iso-linux-ia32"
+rm -rf "$DIR/extract"
 rm -rf "$DIR/iso_src/boot/core.gz"
 # Package app thanks to electron-packager
 electron-packager $1 --overwrite --platform=linux --arch=ia32 electron-iso
 cp "$DIR/autostart.sh" ./electron-iso-linux-ia32
 echo "
-2/4    -> Executing postscript (if specified)...
+2/5    -> Executing postscript (if specified)...
 "
 eval "$POSTSCRIPT"
+# Unpackage iso file
+# Clear (if something has gone wrong previously)
+echo "
+3/5    -> Extracting iso files...
+"
+mkdir /mnt/tmp-electron-iso
+mount "$ISO_FILE" /mnt/tmp-electron-iso -o loop,ro
+mkdir -p "$KIOSKDIR"
+cd "$DIR/extract"
+zcat /mnt/tmp-electron-iso/boot/core.gz | sudo cpio -i -H newc -d
+cp ../xsession ./home/tc/.xsession
+umount /mnt/tmp-electron-iso
+rm -r /mnt/tmp-electron-iso
+cd $CURRENTDIR
+
 # Move packaged app inside iso rootfs and compress
 echo "
-3/4    -> Compressing files...
+4/5    -> Compressing files...
 "
 mv ./electron-iso-linux-ia32 $KIOSKDIR/
 chmod 777 -R $KIOSKDIR
@@ -61,13 +78,14 @@ find | cpio -o -H newc | gzip -2 > ../iso_src/boot/core.gz
 cd ..
 # Create iso file
 echo "
-4/4    -> Creating iso...
+5/5    -> Creating iso...
 "
 mkisofs -l -J -R -V "$APPNAME" -no-emul-boot -boot-load-size 4 \
  -boot-info-table -b boot/isolinux/isolinux.bin \
  -c boot/isolinux/boot.cat -o output.iso iso_src
 # Clear again
 rm -rf "$KIOSKDIR/electron-iso-linux-ia32"
+rm -rf "$DIR/extract"
 rm -rf "$DIR/iso_src/boot/core.gz"
 # Move output to the folder where the script has been called
 mv output.iso "$CURRENTDIR/$APPNAME.iso"
