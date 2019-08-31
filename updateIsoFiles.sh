@@ -29,9 +29,7 @@ DIR=`dirname $(readlink -f $0)`  # Script path
 KIOSKDIR="$DIR/extract/home/tc"  # Subdir
 CURRENTDIR=$PWD                  # Current path
 
-echo "Running electron-iso-packager"
-echo "1/2    -> Preparing build...
-"
+"Extracting files from iso..."
 # Clear (if something has gone wrong previously)
 rm -rf "$DIR/extract"
 
@@ -39,8 +37,7 @@ mkdir /mnt/tmp-electron-iso
 mount "$1" /mnt/tmp-electron-iso -o loop,ro
 mkdir -p "$KIOSKDIR"
 cd "$DIR/extract"
-echo "2/2    -> Extracting files...
-"
+
 zcat /mnt/tmp-electron-iso/boot/core.gz | sudo cpio -i -H newc -d
 cp ../xsession ./home/tc/.xsession
 umount /mnt/tmp-electron-iso
