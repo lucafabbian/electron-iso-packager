@@ -3,7 +3,7 @@
 ```
 Xorg-7.7 openbox aterm nss gdk-pixbuf2 gtk3 libasound libcups
 ```
-If you want to add/remove something you need to remaster the iso, clone this repo and update the included files with the remastered version. This document will guide you in the process; it's divided into two parts: the first explains how to create a remaster tinycore with the desired packages (difficult), the second how to create your own `electron-iso-packager` with the iso you've prepared (easy).
+If you want to add/remove something you need to remaster the iso and call `electron-iso-packager` with the file you've created.
 
 ## Create custom iso file
 First install on your system [Virtualbox](https://www.virtualbox.org/) and download a fresh tinycore iso from the official mirror (the minimal version, called [core.iso](https://distro.ibiblio.org/tinycorelinux/10.x/x86/release/Core-current.iso), it's enough); you will also need a ftp server (such as [vsftpd](https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-a-user-s-directory-on-ubuntu-16-04)) running on your system with write permissions enabled: it's the simplest way to move files between your system and the virtual machine.
@@ -33,10 +33,8 @@ Now you have the possibility to add the extension installed previously, just cli
 
 Done! Just wait a few minutes and the iso file will be ready as `/tmp/ezremaster/ezremaster.iso`; use `ftpput` to upload it on your system.
 
-## Cloning electron-iso-packager
-Just use the included script `updateIsoFiles.sh`, and you are done!
+Now you can just type:
+```bash
+sudo electron-iso-packager ./ MyApp "" /path/to/your/ezremaster.iso
 ```
-git clone https://github.com/lucafabbian/electron-iso-packager.git
-sudo ./electron-iso-packager/updateIsoFiles.sh /path/to/your/ezremaster.iso
-```
-The script will do everything needed. When it ends, if you want you can enter the dir and use `npm link` to make electron-iso-packager command avaiable globally.
+...and you're done!

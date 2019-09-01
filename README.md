@@ -19,7 +19,7 @@ npm install -g electron-iso-packager          # Install this package globally
 
 Then run with root permissions:
 ```bash
-electron-iso-packager <sourcedir> <appname> [postscript]
+electron-iso-packager <sourcedir> <appname> [postscript] [customiso.iso]
 
 # Examples:
 sudo electron-iso-packager ./ MyApp
@@ -27,14 +27,14 @@ sudo electron-iso-packager ./ MyApp "read -n 1" # Wait keypress before packaging
 ```
 Where `<sourcedir>` is the base directory of the application source (same as [electron-packager](https://github.com/electron/electron-packager)).  
 After a while, it will spawn a file called `appname.iso` inside your current directory. Enjoy!  
-You may specify a linux command as third argument, it will be executed after `electron-packager` has finished but before .iso is created, giving you the possibility to edit the `electron-iso-linux-ia32` folder, where your app files are stored before compression. It also allows you to edit `electron-iso-linux-ia32/autostart.sh` to change boot options as explained below.    
+You may specify a linux command as third argument, it will be executed after `electron-packager` has finished but before .iso is created, giving you the possibility to edit the `electron-iso-linux-ia32` folder, where your app files are stored before compression. It also allows you to edit `electron-iso-linux-ia32/autostart.sh` to change boot options as explained below. You can also set a custom iso file as the base of your system instead of the default one (check the [remaster](./REMASTER.md) guide).    
 No further customization is supported yet, but some options will be added soon. Feel free to open a [github issue]() if you think something important is missing.
 
 ## Autostart
 After `electron-packager` has finished, a file called `autostart.sh` is added to the result. This is the file responsable of launching your app after boot.  
 You can replace it using a postscript command, for example:
 ```bash
-sudo electron-iso-packager ./ MyApp "mv customAutostart.sh ./electron-iso-linux-ia32/autostart.sh"
+sudo electron-iso-packager ./ MyApp "cp customAutostart.sh ./electron-iso-linux-ia32/autostart.sh"
 ```
 Default autostart:
 ```bash

@@ -47,7 +47,7 @@ rm -rf "$DIR/extract"
 rm -rf "$DIR/iso_src/boot/core.gz"
 # Package app thanks to electron-packager
 electron-packager $1 --overwrite --platform=linux --arch=ia32 electron-iso
-cp "$DIR/autostart.sh" ./electron-iso-linux-ia32
+cp "$DIR/iso_scripts/autostart.sh" ./electron-iso-linux-ia32
 echo "
 2/5    -> Executing postscript (if specified)...
 "
@@ -62,7 +62,7 @@ mount "$ISO_FILE" /mnt/tmp-electron-iso -o loop,ro
 mkdir -p "$KIOSKDIR"
 cd "$DIR/extract"
 zcat /mnt/tmp-electron-iso/boot/core.gz | sudo cpio -i -H newc -d
-cp ../xsession ./home/tc/.xsession
+cp ../iso_scripts/xsession ./home/tc/.xsession
 umount /mnt/tmp-electron-iso
 rm -r /mnt/tmp-electron-iso
 cd $CURRENTDIR

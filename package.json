@@ -10,7 +10,7 @@
     "test": "echo \"Tests are not avaiable yet\""
   },
   "bin": {
-    "electron-iso-packager": "./buildIso.sh"
+    "electron-iso-packager": "./electron-iso-packager.sh"
   },
   "keywords": [
     "electron",
@@ -23,8 +23,8 @@
     "os"
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/lucafabbian/electron-iso-packager.git"
+    "type": "git",
+    "url": "https://github.com/lucafabbian/electron-iso-packager.git"
   },
   "author": "Luca Fabbian",
   "license": "GPL-3.0-or-later",
