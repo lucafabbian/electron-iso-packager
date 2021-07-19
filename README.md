@@ -14,6 +14,7 @@ Unfortunately, Linux is needed, as well as some basic utilities.
 On debian-like environments:
 ```bash
 apt install coreutils zutils cpio genisoimage # Install dependencies
+npm install -g electron-packager              # Install the electron-packager package, it will be used internally to generate the linux app 
 npm install -g electron-iso-packager          # Install this package globally
 ```
 
