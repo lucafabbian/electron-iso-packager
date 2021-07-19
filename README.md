@@ -1,5 +1,5 @@
 # electron-iso-packager
-Package your Electron app into a bootable .iso file.  
+Package your Electron app into a bootable .iso file (based on Tinycore Linux).  
 Now you can easily create a live cd from your code - no hard disk required at boot!  
 Iso files created by this script work with virtual machines as well.
 
