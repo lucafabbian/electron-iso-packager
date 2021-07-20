@@ -6,7 +6,7 @@ Iso files created by this script work with virtual machines as well.
 The average output file size is around ~125mb, so it's even less than an .exe bundle.
 
 Under the hood, this script calls [electron-packager](https://github.com/electron/electron-packager) to obtain a linux32 packaged version of your app and then puts the result inside a remastered version of [Tinycore Linux](https://distro.ibiblio.org/tinycorelinux/), a slim linux distro, with only the bare necessary to run Electron + a window manager ([openbox](http://openbox.org/wiki/Main_Page)) and a minimal terminal.  
-Check [REMASTER.md]() for a complete list of included packages.
+Check [REMASTER.md](remaster.md) for a complete list of included packages.
 
 Screenshot ([Activity monitor example](https://github.com/electron/simple-samples/tree/master/activity-monitor)):
 ![screenshot](https://github.com/lucafabbian/electron-iso-packager/blob/master/screenshots/1.png?raw=true)
@@ -65,5 +65,5 @@ As said before, [aterm](https://linux.die.net/man/1/aterm) package is included, 
 If your goal is to obtain persistency, you may also be interested in tinycore boot codes as explained [here](http://wiki.tinycorelinux.net/wiki:boot_codes_explained).
 
 ## License
-This package is licensed under GPL-3.0-or-later license.
+This package is licensed under GPL-3.0-or-later license or MIT license, as you wish.  
 Tinycore is licensed under [gpl v2](http://tinycorelinux.net/faq.html).

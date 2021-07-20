@@ -1,11 +1,21 @@
 # Remaster guide
 `electron-iso-packager` comes with this extensions already installed:
 ```
-Xorg-7.7 openbox aterm nss gdk-pixbuf2 gtk3 libasound libcups
+Xorg-7.7 openbox aterm nss gdk-pixbuf2 gtk3 libasound libcups libxkbcommon
 ```
 If you want to add/remove something you need to remaster the iso and call `electron-iso-packager` with the file you've created.
 
 ## Create custom iso file
+Now you can do it without using Virtualbox.
+Look to the scripts inside the `remaster/` folder.  
+You can call `bash remaster.sh` with a list of packages to install.
+
+
+Done!
+
+
+
+# Old method (graphical one)
 First install on your system [Virtualbox](https://www.virtualbox.org/) and download a fresh tinycore iso from the official mirror (the minimal version, called [core.iso](https://distro.ibiblio.org/tinycorelinux/10.x/x86/release/Core-current.iso), it's enough); you will also need a ftp server (such as [vsftpd](https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-a-user-s-directory-on-ubuntu-16-04)) running on your system with write permissions enabled: it's the simplest way to move files between your system and the virtual machine.
 
 Open Virtualbox -> New -> Linux(Other Linux 32bit) -> ram 1024 -> choose no virtual disk  

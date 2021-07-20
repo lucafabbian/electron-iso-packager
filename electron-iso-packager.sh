@@ -4,6 +4,10 @@
 # Feel free to edit it!
 # Tinycore remaster guide: http://wiki.tinycorelinux.net/wiki:remastering
 
+# Author: luca fabbian <luca.fabbian.1999@gmail.com>
+# License: MIT
+
+
 # Usage message and error check
 USAGE="Usage: electron-iso-packager <sourcedir> <appname> [postscript]
     sourcedir      the base directory of the application source
@@ -16,12 +20,14 @@ Examples:
 "
 if test "$#" -lt 2; then
     echo "$USAGE"
-    echo "ERROR: illegal number of parameters (2 required, $# passed)"
+    echo -e "\033[0;31mERROR: illegal number of parameters (2 required, $# passed)\033[0m
+    "
     exit 1
 fi
 if [[ $EUID -ne 0 ]]; then
    echo "$USAGE"
-   echo "ERROR: this script must be run as root!"
+   echo -e "\033[0;31mERROR: this script must be run as root!\033[0m
+    "
    exit 1
 fi
 
@@ -42,11 +48,12 @@ echo "Running electron-iso-packager"
 echo "1/5    -> Preparing build...
 "
 # Clear (if something has gone wrong previously)
-rm -rf "$KIOSKDIR/electron-iso-linux-ia32"
+rm -rf "$APPDIR/electron-iso-linux-ia32"
+rm -rf "$APPDIR/$APPNAME.iso"
 rm -rf "$DIR/extract"
-rm -rf "$DIR/iso_src/boot/core.gz"
+rm -rf "$DIR/iso_src/"
 # Package app thanks to electron-packager
-electron-packager $1 --overwrite --platform=linux --arch=ia32 electron-iso
+electron-packager $1 --platform=linux --arch=ia32 electron-iso
 cp "$DIR/iso_scripts/autostart.sh" ./electron-iso-linux-ia32
 echo "
 2/5    -> Executing postscript (if specified)...
@@ -59,6 +66,11 @@ echo "
 "
 mkdir /mnt/tmp-electron-iso
 mount "$ISO_FILE" /mnt/tmp-electron-iso -o loop,ro
+
+mkdir -p "$DIR/iso_src"
+cp -r "/mnt/tmp-electron-iso/boot"  "$DIR/iso_src"
+rm -fr "$DIR/iso_src/boot/core.gz"
+
 mkdir -p "$KIOSKDIR"
 cd "$DIR/extract"
 zcat /mnt/tmp-electron-iso/boot/core.gz | sudo cpio -i -H newc -d
@@ -84,9 +96,9 @@ mkisofs -l -J -R -V "$APPNAME" -no-emul-boot -boot-load-size 4 \
  -boot-info-table -b boot/isolinux/isolinux.bin \
  -c boot/isolinux/boot.cat -o output.iso iso_src
 # Clear again
-rm -rf "$KIOSKDIR/electron-iso-linux-ia32"
+rm -rf "$APPDIR/electron-iso-linux-ia32"
 rm -rf "$DIR/extract"
-rm -rf "$DIR/iso_src/boot/core.gz"
+rm -rf "$DIR/iso_src/"
 # Move output to the folder where the script has been called
 mv output.iso "$CURRENTDIR/$APPNAME.iso"
 
