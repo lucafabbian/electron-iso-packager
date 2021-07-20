@@ -8,7 +8,7 @@ The average output file size is around ~125mb, so it's even less than an .exe bu
 Under the hood, this script calls [electron-packager](https://github.com/electron/electron-packager) to obtain a linux32 packaged version of your app and then puts the result inside a remastered version of [Tinycore Linux](https://distro.ibiblio.org/tinycorelinux/), a slim linux distro, with only the bare necessary to run Electron + a window manager ([openbox](http://openbox.org/wiki/Main_Page)) and a minimal terminal.  
 Check [REMASTER.md](remaster.md) for a complete list of included packages.
 
-Screenshot ([Activity monitor example](https://github.com/electron/simple-samples/tree/master/activity-monitor)):
+Screenshot ([Activity monitor example](https://github.com/electron/simple-samples/tree/master/activity-monitor), running on Virtualbox):
 ![screenshot](https://github.com/lucafabbian/electron-iso-packager/blob/master/screenshots/1.png?raw=true)
 
 
