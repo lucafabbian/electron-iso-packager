@@ -1,6 +1,6 @@
 {
   "name": "electron-iso-packager",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "os": [
     "linux"
   ],
@@ -30,7 +30,7 @@
   },
   "author": "Luca Fabbian",
   "license": "GPL-3.0-or-later",
-  "dependencies": {
-    "electron-packager": "^14.0.5"
+  "peerDependencies": {
+    "electron-packager": "*"
   }
 }
