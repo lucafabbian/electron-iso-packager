@@ -27,9 +27,9 @@ fi
 
 
 # Params parsing
-APPDIR=`realpath $(readlink -f $1)`        # Electron app dir
-APPNAME=$2       # Iso name and label
-POSTSCRIPT=$3    # Script called before building
+APPDIR=`realpath $(readlink -f $1)`   # Electron app dir
+APPNAME=$2                            # Iso name and label
+POSTSCRIPT=$3                         # Script called before building
 
 
 # Retrieve script real path and store current path
@@ -60,7 +60,7 @@ echo "
 2/5    -> Extracting iso files...
 "
 cd "$MAINDIR/iso"
-7z x "$ISO_FILE"
+7z -y x "$ISO_FILE"
 
 
 echo "

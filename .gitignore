@@ -1,3 +1,7 @@
+# Iso files
+*.iso
+
+
 # Logs
 logs
 *.log

@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# NOTE: the original script has been updated replacing chown with chmod 777, 
+# because it happens to work and does not require root.
+
 # Script to download an extension and its dependencies written by Richard A. Rost July 7,2019
 # The script downloads to the directory you are in when you start the script.
 # There are no Tinycore specific commands, variables, or directories required so it should work
@@ -88,7 +92,9 @@ do
 	else
 		echo "$FILE downloaded." >> $LOG
 		# Change ownership. Numeric values used because foreign Linux box won't have tc:staff.
-		chown 1001:50 "$FILE"
+		#chown 1001:50 "$FILE"
+		chmod 777 "$FILE"
+
 	fi
 
 	# Fetch MD5
@@ -99,7 +105,8 @@ do
 	else
 		echo "$FILE.md5.txt downloaded." >> $LOG
 		# Change ownership. Numeric values used because foreign Linux box won't have tc:staff.
-		chown 1001:50 "$FILE.md5.txt"
+		#chown 1001:50 "$FILE.md5.txt"
+		chmod 777 "$FILE.md5.txt"
 	fi
 
 	# Fetch dependency file
@@ -108,7 +115,8 @@ do
 	then
 		echo "$FILE.dep downloaded." >> $LOG
 		# Change ownership. Numeric values used because foreign Linux box won't have tc:staff.
-		chown 1001:50 "$FILE.dep"
+		#chown 1001:50 "$FILE.dep"
+		chmod 777 "$FILE.dep"
 	fi
 
 	# Verify MD%
