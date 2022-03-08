@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Autostart electron-app
-/home/tc/electron-iso-linux-ia32/electron-iso --no-sandbox --use-gl=swiftshader &
+/home/tc/app/electron-iso-app --no-sandbox --use-gl=swiftshader &
 
 # Default tinycore desktop .xsession
 "$DESKTOP" 2>/tmp/wm_errors &

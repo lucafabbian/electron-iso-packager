@@ -2,4 +2,4 @@ Xvesa -br -screen 1024x768x32 -shadow -2button -mouse /dev/input/mice,5 -noliste
 export XPID=$!
 waitforX || ! echo failed in waitforX || exit
 sudo ln -s /tmp/tcloop/fontconfig/usr/local/etc/fonts /etc
-/home/tc/electron-iso-linux-ia32/autostart.sh
+/home/tc/app/autostart.sh
