@@ -75,7 +75,7 @@ cd ..
 echo "
 4/4    -> Creating iso...
 "
-mkisofs -l -J -R -V "Remastered Core" -no-emul-boot -boot-load-size 4 \
+genisoimage -l -J -R -V "Remastered Core" -no-emul-boot -boot-load-size 4 \
  -boot-info-table -b boot/isolinux/isolinux.bin \
  -c boot/isolinux/boot.cat -o output.iso iso
 

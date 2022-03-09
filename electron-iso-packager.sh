@@ -82,7 +82,7 @@ cd ..
 echo "
 5/5    -> Creating iso...
 "
-mkisofs -l -J -R -V "$APPNAME" -no-emul-boot -boot-load-size 4 \
+genisoimage -l -J -R -V "$APPNAME" -no-emul-boot -boot-load-size 4 \
  -boot-info-table -b boot/isolinux/isolinux.bin \
  -c boot/isolinux/boot.cat -o output.iso iso
 
